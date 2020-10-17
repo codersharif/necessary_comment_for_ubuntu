@@ -1,0 +1,38 @@
+How to send an Email in Laravel using Gmail SMTP Server
+
+
+Step 1: Configure Gmail SMTP Server in Laravel Application
+
+Thus, open your .env file which is located in your root directory of our application and checkout for this settings:
+
+MAIL_DRIVER=smtp
+MAIL_HOST=mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+
+
+Now edit the details above as follows.
+
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.googlemail.com
+MAIL_PORT=465
+MAIL_USERNAME=ENTER_YOUR_EMAIL_ADDRESS(GMAIL)
+MAIL_PASSWORD=ENTER_YOUR_GMAIL_PASSWORD
+MAIL_ENCRYPTION=ssl
+
+
+Step 2: Configure your Google Account
+
+Login to your Google Email Account and click on Google Account Button. This button is display when you click on the profile picture in your Gmail Dashboard as shown.
+Once you are on My Account Page then click on Security and scroll down to the bottom and you will find ‘Less secure app access’ settings. Click on the radio button to set it ON.
+
+
+
+step 3 :Send Emails from your Laravel Application
+
+   mail::raw('its work',function($message){
+            $message->to(request('email'))
+                    ->subject('helo there');
+        });

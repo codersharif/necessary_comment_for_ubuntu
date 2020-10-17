@@ -1,0 +1,43 @@
+if the requested url /login was not found on this server. laravel then :::solution
+1.no solution: ******** success solution ******code *******
+ $ cd /etc/apache2/mods-enabled/
+ 
+If it does not exist execute the following excerpt:
+
+ $ sudo a2enmod rewrite
+Otherwise, change the Apache configuration file to consolidate use of the "friendly URL".
+
+ $ sudo nano /etc/apache2/apache2.conf
+Find the following code inside the editor:
+
+<Directory /var/www/> 
+   Options Indexes FollowSymLinks
+   AllowOverride None
+   Require all granted
+</Directory> 
+
+Change to:
+<Directory /var/www/> 
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Require all granted
+</Directory>
+
+
+After that restart the Apache server via:
+
+$ sudo /etc/init.d/apache2 restart
+
+2. solution
+
+$ /etc/init.d/apache2 restart
+
+3.no soluton:
+
+ $ sudo a2enmod rewrite
+
+to enable the mod_rewrite on the .htaccess file, then
+
+ $sudo service apache2 restart 
+
+

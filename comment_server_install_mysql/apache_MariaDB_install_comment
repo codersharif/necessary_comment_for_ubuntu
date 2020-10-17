@@ -1,0 +1,115 @@
+Step 1: Update Software Packages
+
+Before we install the LAMP stack, it’s a good idea to update repository and software packages. Run the following command on your Ubuntu 17.10 OS.
+
+$ sudo apt update
+
+$ sudo apt upgrade
+
+
+Step 2: Install Apache Web Server
+Enter the following command to install Apache Web server. The apache2-utils package will install some useful utilities like Apache HTTP server benchmarking tool (ab).
+
+$ sudo apt install -y apache2 apache2-utils
+
+After it’s installed, Apache should be automatically started. Check its status with systemctl.
+
+$ systemctl status apache2
+
+Output:
+
+● apache2.service - The Apache HTTP Server
+   Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor preset: 
+  Drop-In: /lib/systemd/system/apache2.service.d
+           └─apache2-systemd.conf
+   Active: active (running) since Sat 2017-10-21 14:37:01 CST; 3s ago
+
+:::::::::::::::::
+If it’s not running, use systemctl to start it.
+
+$ sudo systemctl start apache2
+It’s also a good idea to enable Apache to automatically start at boot time.
+
+$ sudo systemctl enable apache2
+
+Check Apache version:
+
+$ apache2 -v
+
+Output:
+
+Server version: Apache/2.4.27 (Ubuntu)
+Server built: 2017-09-18T15:05:48
+
+Now we need to set www-data (Apache user) as the owner of document root. By default it’s owned by the root user.
+
+$ sudo chown www-data:www-data /var/www/html/ -R
+
+
+Step 3: Install MariaDB Database Server
+MariaDB is a drop-in replacement for MySQL. Enter the following command to install it on Ubuntu 17.10.
+
+$ sudo apt install mariadb-server mariadb-client
+
+After it’s installed, MariaDB server should be automatically stared. Use systemctl to check its status.
+
+$systemctl status mariadb
+
+Output:
+
+● mariadb.service - MariaDB database server
+   Loaded: loaded (/lib/systemd/system/mariadb.service; enabled; vendor preset: 
+   Active: active (running) since Sat 2017-10-21 14:53:04 CST; 11s ago
+
+
+
+If it’s not running, start it with this command:
+
+$ sudo systemctl start mariadb
+
+$ sudo systemctl enable mariadb
+Now run the post installation security script.
+
+$ sudo mysql_secure_installation
+
+When it asks you to enter MariaDB root password, press Enter key as the root password isn’t set yet. Then enter y to set the root password for MariaDB server.
+
+
+::::::::::::::::
+
+Check MariaDB server version information.
+
+$ mariadb --version
+Output:
+
+mariadb Ver 15.1 Distrib 10.1.25-MariaDB, for debian-linux-gnu (x86_64) using readline 5.2
+
+
+:::::::::::::::::
+
+Step 4: Install PHP7.1
+At the the time of this writing, PHP7.1 is the latest stable version of PHP and has a minor performance edge over PHP7.0. Enter the following command to install PHP7.1.
+
+$ sudo apt install php7.1 libapache2-mod-php7.1 php7.1-mysql php-common php7.1-cli php7.1-common php7.1-json php7.1-opcache php7.1-readline
+
+Enable the Apache php7.1 module then restart Apache Web server.
+
+$sudo a2enmod php7.1
+
+$ sudo systemctl restart apache2
+
+Check PHP version information.
+
+$ php --version
+
+
+:::::::::::::::::::::::::::::::::::
+
+How to Switch between Multiple PHP Version on Ubuntu
+
+Switch From PHP 5.6 => PHP 7.2
+
+
+
+
+

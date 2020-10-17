@@ -1,0 +1,42 @@
+Install Git on Linux
+1.From your shell, install Git using apt-get:
+$ sudo apt-get update
+$ sudo apt-get install git
+2.Verify the installation was successful by typing 
+git --version:
+$ git --version
+ git version 2.9.2
+
+
+create folder tarminal:mkdir folder name
+
+............................................................
+3.Configure your Git username and email using the following commands, replacing Emma's name with your own. These details will be associated with any commits that you create:
+
+$ git config --global user.name "codersharif"
+ $ git config --global user.email "khansharifulislam24@gmail.com"
+
+:::::::::::::::::::::::::::::::
+…or create a new repository on the command line
+echo "# gittest" >> README.md
+git init            // git init kon project e ekbar use korle ar use korte hobe na.
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/codersharif/gittest.git    //file age theke github e add thakle eta ar use kora lagbe na 
+git push -u origin master
+
+
+::::::::::::::::::::::::::::::::::::::::::::
+…or push an existing repository from the command line
+$ git remote add origin https://github.com/codersharif/gittest.git
+$ git push -u origin master
+
+$ git pull origin master   //eta use kori tokhon  ,, jodi amra github e kon text edit kori ,seta jodi computer e ante cai tahole use korte hobe.
+
+$ git clone project souece link exmple:https://github.com/codersharif/ubundu17.10.git   ....jokhon ami anno folder e kaj korte cai ...tokhon gitgub tekhe ante hole eta use korte hobe.
+ exm:$ git clone https://github.com/codersharif/ubundu17.10.git
+
+
+$ git status 
+$git show
+

@@ -1,0 +1,65 @@
+apache2 status:
+ $ systemctl status apache2
+ $ sudo systemctl start apache2
+ 
+ It’s also a good idea to enable Apache to automatically start at boot time.
+ $ sudo systemctl enable apache2
+
+ Check Apache version:
+ $ apache2 -v
+
+
+mysql server install:
+
+source code:https://support.rackspace.com/how-to/installing-mysql-server-on-ubuntu/
+
+https://www.vultr.com/docs/how-to-install-apache-mysql-and-php-on-ubuntu-16-04
+
+https://www.linuxbabe.com/ubuntu/install-apache-mariadb-php7-1-ubuntu-17-10
+
+$ sudo apt-get install mysql-server
+
+status:
+ $ systemctl status mysql
+ $ systemctl start mysql
+
+ Launch at reboot
+ To ensure that the database server launches after a reboot, run the following command:
+
+  $ systemctl enable mysql
+
+
+mysql shell:
+$ sudo mysql -u root -p
+ output: mysql>
+
+
+
+The installer installs MySQL and all dependencies.
+
+ $ sudo mysql_secure_installation
+
+
+:::::::::::::::
+  Step 1: Install Apache
+  First, update your package manager.
+
+  $ sudo apt-get update -y
+
+ Install and start Apache.
+
+  $ sudo apt-get install apache2 -y
+  $ sudo systemctl start apache2.service
+
+
+Step 4: Starting Apache and MySQL on boot
+This is necessary to start your web environment on boot.
+
+ $ sudo systemctl enable apache2.service
+ $ sudo systemctl enable mysql.service
+Finally, restart Apache to allow PHP to run.
+
+ $ systemctl restart apache2.service
+
+
+

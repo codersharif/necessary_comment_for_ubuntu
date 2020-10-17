@@ -1,0 +1,12 @@
+How to Fix Minimal BASH Like Line Editing is Supported GRUB Error In Linux
+grub >ls //step-1
+grub >ls (hd0,gpt3)   //ext*4  //step-2
+grub >set root=(hd0,gpt3) //step-3
+grub >set prefix=(hd0,gpt3)/boot/grub
+grub >insmod normal //setp-4
+grub >normal
+
+
+then....
+sudo grub-install /dev/sda3
+sudo update-grub

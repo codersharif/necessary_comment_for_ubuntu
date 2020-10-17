@@ -1,0 +1,23 @@
+Ubuntu fix apt get dependencies error
+
+
+step 1: sudo dpkg --audit
+
+show apps name
+
+step 2: sudo apt-get purge  apps name.....
+
+
+step 3: sudo apt-get clean
+
+step 4: sudo apt-get autoclean
+
+step 5: sudo apt-get update
+
+step 6: sudo apt-get remove apps name----
+
+step 7: sudo apt-get update
+
+step 8: sudo apt-get upgrade
+
+

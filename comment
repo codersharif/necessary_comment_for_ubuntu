@@ -1,0 +1,90 @@
+if  cannot open text document ubuntu 17.10
+
+so,tarminal on then ...write commend:touch ~/Templates/Untitled\ Document
+
+
+sublime text3 install: 
+$ sudo add-apt-repository ppa:webupd8team/sublime-text-3
+$ sudo apt-get update
+$ sudo apt-get install sublime-text-installer
+
+
+file.rur file commend install:
+1st:chmod +x file.rur
+2nd:./file.rur
+
+if root pravilize hoy tahole.....
+sudo chmod +x file.rur
+sudo ./file.rur
+
+
+xammp start .....stop...and restart comment....
+
+sudo /opt/lampp/lampp start
+
+sudo /opt/lampp/lampp stop
+ 
+sudo /opt/lampp/lampp security
+
+sudo nano /opt/lampp/etc/extra/httpd-xampp.conf
+
+sudo /opt/lampp/lampp restart
+
+
+
+folder permition comment:::::::::::::
+
+sudo chmod -R 777 project
+
+sudo chown -R bhutu project
+
+deb file install:::::::::::::::::::::::::::::::::::
+
+Shall I install by .. dpkg -i my.deb, or by apt?(deb file)
+
+
+rur file install:::::::::::::::::::::::::::::::::::::::
+Terminal Method
+
+Assume the file is called some-app.run and is in the folder /home/user/Downloads. You will need to modify these instructions to fit your situation.
+
+    Open a terminal (Applications->Accessories->Terminal).
+
+    enter cd /home/user/Downloads
+    enter chmod +x some-app.run
+
+    enter ./some-app.run
+
+    if step 4 fails with a message including 'permission denied', try entering sudo ./some-app.run (you will need to enter your password for this).
+
+
+
+chmod +x xampp-linux-1.8.2-0-installer.run
+./xampp-linux-1.8.2-0-installer.run
+
+sudo /opt/lampp/uninstall
+
+
+
+sudo apt-get install macchanger macchanger-gtk
+
+
+folder remove :::::::::::::::
+rm -r mydir
+
+mydir=folder name
+
+
+application kill:
+terminal open
+then....top    enter press
+then....ctrl+c 
+then...kill application number ok
+
+
+hide file show commend:::: ctrl+h   
+
+
+
+
+

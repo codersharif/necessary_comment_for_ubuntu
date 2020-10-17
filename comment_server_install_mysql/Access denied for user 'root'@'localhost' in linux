@@ -1,0 +1,29 @@
+Acces  denied for user 'root'@ localhost problem solution:
+
+video location: tutorials/ folder
+
+install mysql server:
+ $ sudo apt-get install mysql server
+
+mysql shell run:
+
+ $ sudo mysql -u root -p
+
+mysql>use mysql;
+
+mysql>SELECT User, host, plugin FROM mysql.user;
+
+output: | User             | Host      | plugin                                |
++------------------+-----------+-------------------------------------------+
+| root             | localhost | auth_socket |
+
+
+mysql>UPDATE user SET plugin='mysql_native_password' WHERE User='root';
+
+mysql>SELECT User, host, plugin FROM mysql.user;
+mysql>exit;
+
+
+  $ service mysql restart
+
+

@@ -1,0 +1,19 @@
+install :
+Step 1: Uninstall All Previous Versions
+sudo apt-get purge skypeforlinux && sudo apt-get autoremove
+Step 2: Installing / Upgrade Skype
+sudo apt-get update
+sudo apt-get install apt-transport-https -y
+
+.........curl
+sudo apt-get install curl
+curl https://repo.skype.com/data/SKYPE-GPG-KEY | sudo apt-key add -
+echo "deb [arch=amd64] https://repo.skype.com/deb stable main" | sudo tee /etc/apt/sources.list.d/skype-stable.list
+
+sudo apt-get update
+sudo apt-get install skypeforlinux -y
+
+
+
+remove:
+sudo apt-get remove skypeforlinux -y

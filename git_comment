@@ -1,0 +1,31 @@
+git init
+git add . (full file add (.))
+git commit -m "ss"
+git push
+git status
+
+
+download ......
+git clone https://github.com/codersharif/laravel6.git
+
+
+branch check /change
+
+git branch
+git branch BRANCH_NAME(coder)
+
+branch shift_____
+git checkout BRANCH_NAME(coder)
+
+pushing to this branch-----
+git push -u origin BRANCH_NAME(coder)
+
+
+Merge Brance--------
+
+git checkout main
+git pull origin main
+git merge BRANCH_NAME(coder)
+git push origin main
+
+
