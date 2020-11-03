@@ -1,0 +1,202 @@
+*****************Install Android SDK in the Ubuntu 20.04 LTS — Without Android Studio***********
+
+PATH CHECK COMMEND:
+sharif@sharif-HP-14-Notebook-PC:~/Android-SDK$ pwd
+
+
+1st STEP:: JDK INSTALL
+2nd STEP :: gradle Install
+
+1 Gradle Download Link :: 
+links https://gradle.org/install/
+
+2 Installing manually:
+ click: Binary-only
+ 
+3. Unpack the distribution Linux users
+   unzip gradle-6.7.zip file from Download  and move Home/ Directory (Rename : gradle)
+   
+4. Configure your system environment
+   sudo nano ~/.bashrc
+   
+   add end of file:::
+   
+   export PATH=$PATH:/home/sharif/gradle/gradle-6.7/bin
+   
+     
+4.1 Reset PATH:
+ source ~/.bashrc
+
+4.2 Check Version
+
+  gradle --version
+   
+
+
+
+
+:::::::::SYSTEM 1 ::::::::::::::::::::::::::::::::::::
+1. Download Android Command Tools
+links:https://developer.android.com/studio/index.html#command-tools
+Platform: Linux
+
+1.1 Check for the correct “commandlinetools***” file download:
+ ls -l ~/Downloads
+ 
+ 2. Create a Development Tools directory in your home directory, called Android-SDK (or use an appropriate name): 
+ sudo mkdir ~/Android-SDK
+ 
+3. Create a sub-directory, into DevTools, called Android:
+ sudo mkdir ~/Android-SDK/Android
+ 
+2.1 Create another sub-directory, into Android, called cmdline-tools: 
+ sudo mkdir ~/Android-SDK/Android/cmdline-tools
+ 
+3. Extract the “commandlinetools-linux-***.zip” file into a specific directory: cmdline-tools:
+  unzip commandlinetools-linux-6200805_latest.zip
+
+3.1 Move tools directory into the cmdline-tools directory:
+   mv tools ~/DevTools/Android/cmdline-tools/
+  
+3.2 Check for the tools was moved successful:
+ ls -l ~/DevTools/Android/cmdline-tools/tools
+ 
+5. Set the path of Android SDK directory in the Ubuntu environment variables. Edit the following file:
+ sudo nano ~/.bashrc
+ 
+5.1 Add to the end of the .bashrc file:
+
+ ANDROID_SDK_ROOT="/home/sharif/Android-SDK"
+ ANDROID_HOME="$ANDROID_SDK_ROOT/Android"
+
+ export ANDROID_HOME
+ PATH="$ANDROID_HOME/cmdline-tools/tools/bin:$ANDROID_HOME/platform-tools:$PATH"
+ 
+ 
+ 5.2 Reset PATH:
+ source ~/.bashrc
+ 
+ ***** PATH CHECK****
+ echo $ANDROID_HOME
+ 
+ 
+ 6. Testing sdkmanager:
+ sdkmanager --version
+ 
+ 7. Listing all packages available:
+ sdkmanager --list
+ 
+ 
+ 8. Update Android Packages when necessary:
+ 
+ sdkmanager --update
+ 
+ or---------
+ Android-SDK$: Android/cmdline-tools/tools/bin/sdkmanager --update
+ 
+ 9. Install Platform for Android 29: And Install Build Tools for Android 29:
+ 
+ sdkmanager "platform-tools" "platforms;android-29"
+ 
+ sdkmanager "build-tools" "build-tools;29.0.3"
+ 
+ or----------------
+ 
+Android-SDK$: Android/cmdline-tools/tools/bin/sdkmanager "platforms;android-28" "build-tools;28.0.3" "extras;google;m2repository" "extras;android;m2repository"
+
+10. Accept Android Licenses:
+sdkmanager --licenses
+
+or-------------
+Android-SDK$: Android/cmdline-tools/tools/bin/sdkmanager --licenses
+
+
+
+
+ 
+ 
+ 
+ *****if you add java(jdk) then follow this step******
+ 
+ COMMEND LINE INSTALL OR MINUAL INSTALL
+ 
+ sudo apt install open-11-jdk
+ 
+ or-------------
+ 
+ 1. Create a sub-directory, in the DevTools, called JDK:
+  sudo mkdir ~/Android-SDK/JDK
+  
+ 2. Download the OpenJDK 11 LTS Version (“tar.gz”), here: Download for Linux x64
+  links:: https://adoptopenjdk.net
+ 
+ 2.1 Check for the correct OpenJDK file download:
+ ls -l ~/Downloads
+ 
+ 3. Extracting OpenJDK file:
+ tar -zxvf ~/Downloads/OpenJDK11U-jdk***tar.gz -C ~/Android-SDK/JDK/
+ 
+ 3.1 Check for the correct OpenJDK file5. Set the path of OpenJDK directory in the Ubuntu environment variables. Edit the following file: extracted:
+ ls -l ~/DevTools/JDK/
+ 
+ 4. Set the path of OpenJDK directory in the Ubuntu environment variables. Edit the following file:
+  sudo nano ~/.bashrc
+ 
+ ********* sudo nano ~/.bashrc *****************
+ANDROID_SDK_ROOT="/home/$USER/ANDROID_SDK_ROOT"
+JAVA_HOME="$ANDROID_SDK_ROOT/JDK/jdk-11.0.7+10"
+export JAVA_HOME
+PATH="$JAVA_HOME/bin:$PATH"
+
+4.1 Reset PATH:
+source ~/.bashrc
+
+6. Testing java command (JRE):
+ java --version
+ 
+7. Testing javac command (JDK):
+ javac --version 
+ 
+ 
+ ******* END JDK SETUP ***********************************
+ 
+ 
+ 
+::::: Running On Device indroid apk :::::: React Native or Vue Native
+Running your app on Android devices#
+
+1. Enable Debugging over USB#
+
+2. Plug in your device via USB#
+
+$ lsusb
+Bus 002 Device 002: ID 8087:0024 Intel Corp. Integrated Rate Matching Hub
+Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 001 Device 003: ID 22b8:2e76 Motorola PCS
+Bus 001 Device 002: ID 8087:0024 Intel Corp. Integrated Rate Matching Hub
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 004 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+
+In this case, it's 22b8. That's the identifier for Motorola.
+
+You'll need to input this into your udev rules in order to get up and running:
+
+echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="22b8", MODE="0666", GROUP="plugdev"' | sudo tee /etc/udev/rules.d/51-android-usb.rules
+
+Now check that your device is properly connecting to ADB, the Android Debug Bridge, by running adb devices.
+$ adb devices
+List of devices attached
+emulator-5554 offline   # Google emulator
+14ed2fcc device         # Physical device
+
+3. Run your app#
+react-native run-android
+
+
+
+
+
+
+
+

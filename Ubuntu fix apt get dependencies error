@@ -21,3 +21,9 @@ step 7: sudo apt-get update
 step 8: sudo apt-get upgrade
 
 
+
+
+last 
+sudo apt-get install -f
+
+
