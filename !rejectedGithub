@@ -1,0 +1,7 @@
+//! [rejected] master -> master (fetch first)
+
+
+step 1 : git pull origin master (in case if you get any message then ignore it)
+step 2 : git add .
+step 3 : git commit -m 'your commit message'
+step 4 : git push origin master
