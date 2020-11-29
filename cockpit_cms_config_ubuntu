@@ -1,0 +1,70 @@
+1:::
+
+sudo nano /etc/php/7.4/apache2/php.ini
+
+The lines below is a good settings for most PHP based CMS… Update the configuration file with these and save….
+
+file_uploads = On
+allow_url_fopen = On
+short_open_tag = On
+memory_limit = 256M
+upload_max_filesize = 100M
+max_execution_time = 360
+date.timezone = America/Chicago
+
+
+2:::
+sudo systemctl restart apache2.service
+
+
+3::: Configure Apache2 Cockpit CMS Site
+
+sudo nano /etc/apache2/sites-available/cockpit.conf
+
+Then copy and paste the content below into the file and save it. Replace the highlighted line with your own domain name and directory root location.
+
+<VirtualHost *:80>
+     ServerAdmin admin@example.com
+     DocumentRoot /var/www/html/cockpit
+     ServerName example.com
+     ServerAlias www.example.com
+
+     <Directory /var/www/html/cockpit/>
+          Options FollowSymlinks
+          AllowOverride All
+          Require all granted
+     </Directory>
+
+     ErrorLog ${APACHE_LOG_DIR}/error.log
+     CustomLog ${APACHE_LOG_DIR}/access.log combined
+    
+     <Directory /var/www/html/cockpit/>
+            RewriteEngine on
+            RewriteBase /
+            RewriteCond %{REQUEST_FILENAME} !-f
+            RewriteRule ^(.*) index.php [PT,L]
+    </Directory>
+</VirtualHost>
+
+
+
+
+4::: Enable Cockpit CMS Site and Rewrite Module
+
+
+sudo a2ensite cockpit.conf
+sudo a2enmod rewrite
+sudo systemctl restart apache2.service
+
+
+extension::: php7.4 (PDO,sqlite)
+
+
+
+
+
+
+
+
+
+
