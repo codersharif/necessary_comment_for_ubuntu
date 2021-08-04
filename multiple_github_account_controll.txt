@@ -1,0 +1,17 @@
+Check :
+$ git config --list
+
+exit:
+$ :q
+
+multiple account (true) comment:
+
+$ git config --global credential.helper wincred
+
+Enable WCM for Multiple Credentials:
+
+$ git config --global credential.useHttpPath true
+
+Git Configuration
+$ git config --global user.name "John Doe"
+$ git config --global user.email johndoe@example.com
